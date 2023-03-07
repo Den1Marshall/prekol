@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        background-color: lightblue;
+      }
+
+      h1 {
+        color: white;
+      }
+
+      .btns {
+        display: flex;
+        width: 100px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      button {
+        color: gray;
+      }
+
+      #no {
+        position: absolute;
+        transform: translateX(50px);
+        transition: 0.5s;
+      }
+
+      button:active {
+        outline: blue auto 5px;
+      }
+    </style>
+    <h1>Ты меня любишь?</h1>
+    <div class="btns">
+      <button id="yes">да</button>
+      <button id="no">нет</button>
+    </div>
+    <script>
+      function randomIntFromInterval(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      const yesBtn = document.getElementById("yes");
+
+      const clickAgain = () => {
+        alert('Ну нажми на "нет" хоть разок 🙄');
+      };
+
+      const yes = () => {
+        alert(
+          "Котенок, я тебя тоже очень сильно люблю и приглашаю тебя на 18:00 в перцы, чтобы отлично провести время, а еще - ЛЮБИТЬ ТЕБЯ И ЦЕЛОВАТЬ!!!!!!!! ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️"
+        );
+      };
+
+      yesBtn.addEventListener("click", clickAgain);
+
+      const noBtn = document.getElementById("no");
+
+      noBtn.addEventListener("mouseover", () => {
+        yesBtn.removeEventListener("click", clickAgain);
+        yesBtn.addEventListener("click", yes);
+        noBtn.style.left = `${randomIntFromInterval(10, 80)}%`;
+        noBtn.style.top = `${randomIntFromInterval(10, 80)}%`;
+      });
+
+      noBtn.addEventListener("click", function (e) {
+        yesBtn.removeEventListener("click", clickAgain);
+        yesBtn.addEventListener("click", yes);
+        noBtn.style.left = `${randomIntFromInterval(10, 80)}%`;
+        noBtn.style.top = `${randomIntFromInterval(10, 80)}%`;
+      });
+    </script>
+  </body>
+</html>
